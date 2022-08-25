@@ -10,13 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
    
     $components = parse_url($url);
     parse_str($components['query'], $results);
-    $subDir = $results['subDir'] ?? null;
+    $subDir = $results['sub_dir'] ?? null;
     if($subDir) {
         $dir = mapDirectoriesWithFiles($APP_IMG_PATH."/".$subDir);
     } else {
         $dir = mapDirectories($APP_IMG_PATH);
     }
-    
+
     if($dir) {
         try {
             http_responder('SUCCESS', $dir);
